@@ -1,0 +1,7 @@
+results
+allure-results
+build_artifacts
+log
+node_modules
+cypress/screenshots/
+cypress/videos

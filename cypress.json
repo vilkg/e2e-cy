@@ -1,0 +1,14 @@
+{
+  "baseUrl": "https://smoke.dhis2.org/dev_smoke",
+  "requestTimeout": 200000,
+  "defaultCommandTimeout": 200000,
+  "chromeWebSecurity": false,
+  "integrationFolder": "cypress/integration",
+  "env": {
+    "login_username": "admin",
+    "login_password": "district",
+    "allure": "true"
+  },
+  "numTestsKeptInMemory":3
+  
+}

@@ -1,0 +1,26 @@
+{
+  "name": "e2e-cy",
+  "version": "1.0.0",
+  "description": "DHIS2 e2e tests in cypress",
+  "scripts": {
+    "browserstack": "browserstack-cypress run --sync",
+    "cy:open": "cypress open",
+    "cy:test": "cypress run --spec ./cypress/integration/apps_smoke_spec.js --browser chrome",
+    "allure:serve": "allure serve --results ./build_artifacts/**/*/*/allure-results"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vilkg/e2e-cy.git"
+  },
+  "author": "Gintare Vilkelyte <vilkelyte.gintare@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@shelex/cypress-allure-plugin": "^2.23.0",
+    "axios": "^0.25.0",
+    "chalk": "^4.0.0",
+    "chrome-remote-interface": "^0.31.1",
+    "cypress": "^9.3.1",
+    "cypress-network-idle": "^1.3.3",
+    "cypress-wait-until": "^1.7.2"
+  }
+}
