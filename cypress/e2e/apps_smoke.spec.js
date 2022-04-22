@@ -1,9 +1,9 @@
 describe('Apps', () => {
   const apps = Cypress.env('apps')
-  before(() => {
-    cy.login()
+ 
+  beforeEach(() => {
+    cy.clearConsoleLogs();
   })
-
   apps.forEach((app) => {
     it(app, () => {
       cy.visit(app)
@@ -15,10 +15,6 @@ describe('Apps', () => {
 
     })
 
-  })
-
-  afterEach(() => {
-    cy.clearConsoleLogs();
   })
 
 })

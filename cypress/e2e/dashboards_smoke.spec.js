@@ -8,10 +8,11 @@ import {
 
 describe('Dashboards', () => {
   const dashboards = Cypress.env('dashboards')
-  before(() => {
-    cy.login()
+ 
+  beforeEach(() => {
+    cy.clearConsoleLogs();
   })
-
+  
   dashboards.forEach(dashboard => {
     it(dashboard.name, () => {
       openDashboard( dashboard.id );
@@ -24,10 +25,6 @@ describe('Dashboards', () => {
         })
     })
   });
-
-  afterEach(() => {
-    cy.clearConsoleLogs();
-  })
 
 })
 

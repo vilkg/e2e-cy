@@ -1,8 +1,10 @@
 const axios = require('axios');
 const _ = require('lodash')
 
+const struts_apps = ['dhis-web-dataentry/index.action', 'dhis-web-approval-classic/index.action']
+
 async function initData( config ) {
-  console.log('init')
+  console.log('Initializing data')
 
   const login = await axios.get('/api', {
     baseURL: config.baseUrl,
@@ -13,29 +15,42 @@ async function initData( config ) {
   });
 
   const client = axios.create({
-    withCredentials: true,
+    withCredentials: false,
     baseURL: config.baseUrl,
     headers: {
       'Cookie': login.headers['set-cookie'][0]
     }
   });
 
-  const apps = await client.get('/dhis-web-apps/apps-bundle.json');
-  const appList = ['dhis-web-dataentry/index.action', 'dhis-web-approval-classic/index.action'];
-  appList.push(...apps.data.flatMap(i => i.webName))
-  config.env.apps = appList
+  const fetchData = async ( url, callback) => {
+    const { data } = await client.get(url, {
+      baseURL: config.baseUrl,
+      auth: {
+        username: config.env.login_username,
+        password: config.env.login_password,
+      }
+    });
 
-  console.log('Fetched the following apps for testing')
-  console.table(appList)
-
-  const dashboards = await client.get('/api/dashboards?fields=id,name');
-  config.env.dashboards = dashboards.data.dashboards;
-
-  console.log('Fetched the following dashboards for testing')
-  console.table(config.env.dashboards)
+    return callback( data ); 
+  };
   
+  await fetchData('/dhis-web-apps/apps-bundle.json', ( data ) => {
+    const appList = struts_apps;
   
- 
+    appList.push(...data.flatMap(i => i.webName))
+    config.env.apps = appList
+  
+    console.log('Fetched the following apps for testing')
+    console.table(appList)
+  })
+
+  await fetchData('/api/dashboards?fields=id,name&paging=false', (data) => {
+    config.env.dashboards = data.dashboards;
+    
+  })
+  await fetchData('/api/visualizations?fields=id,displayName&paging=false', (data) => {
+    config.env.visualizations = data.visualizations;
+  })
 }
 
 module.exports = initData;
