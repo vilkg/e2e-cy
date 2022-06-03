@@ -2,10 +2,12 @@ import { getLineLists } from '../utils/api';
 import { LINE_LISTING_APP, loadLineList, Selectors } from '../utils/analytics';
 
 describe('Line listing', () => {
+  const lineLists = Cypress.env('eventVisualizations');
+  console.table(lineLists);
+  
   beforeEach(() => {
     cy.visit(LINE_LISTING_APP)
   })
-  const lineLists = Cypress.env('eventVisualizations');
   
   lineLists.forEach(lineList => {
     it(lineList.displayName, () => {

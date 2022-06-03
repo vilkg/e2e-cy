@@ -45,9 +45,8 @@ async function initData( config ) {
 
   await fetchData('/api/dashboards' + queryParams, (data) => {
     config.env.dashboards = data.dashboards;
-    console.table(config.env.dashboards)
-    
   })
+
   await fetchData('/api/visualizations' + queryParams, (data) => {
     config.env.visualizations = data.visualizations;
   })
@@ -66,8 +65,6 @@ async function initData( config ) {
 
   await fetchData(`/api/eventVisualizations.json${queryParams}&filter=type:eq:LINE_LIST`, ( data ) => {
     config.env.eventVisualizations = data.eventVisualizations;
-    console.table(config.env.eventVisualizations)
-
   })
 }
 

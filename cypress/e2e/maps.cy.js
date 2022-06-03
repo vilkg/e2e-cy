@@ -2,6 +2,8 @@ import { loadMap, checkVisualizationHasNoErrors } from '../utils/analytics';
 
 describe('Maps', () => {
   const maps = Cypress.env('maps'); 
+  console.table(maps);
+  
   beforeEach(() => {
     cy.clearConsoleLogs();
   })

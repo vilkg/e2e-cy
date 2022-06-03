@@ -1,8 +1,9 @@
 import { loadEventChart } from '../utils/analytics';
 
 describe('Event visualizer', () => {
-
   const eventCharts = Cypress.env('eventCharts'); 
+  console.table(eventCharts);
+  
   beforeEach(() => {
     cy.clearConsoleLogs();
   })
