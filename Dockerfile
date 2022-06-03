@@ -1,7 +1,7 @@
 FROM 'cypress/included:10.0.2'
 
 ENV CYPRESS_VIDEO=false
-WORKDIR /tests
+WORKDIR /usr/test
 COPY ./package.json ./package.json
 RUN npm install
 COPY ./cypress.config.js ./cypress.config.js
