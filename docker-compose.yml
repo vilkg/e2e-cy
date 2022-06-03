@@ -2,6 +2,7 @@ version: '3'
 services: 
   cypress-tests:
     image: 'dhis2/cypress-tests:master'
+    user: 0:0
     environment:
       CYPRESS_BASE_URL: https://smoke.dhis2.org/dev_smoke
       CYPRESS_REPORT_PORTAL_ENABLED: ${REPORT_PORTAL_ENABLED:-'false'}
