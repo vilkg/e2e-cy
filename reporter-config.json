@@ -1,5 +1,5 @@
 {
-  "reporterEnabled": "@reportportal/agent-js-cypress, cypress-parallel/json-stream.reporter.js, cypress-parallel/simple-spec.reporter.js",
+  "reporterEnabled": "cypress-parallel/json-stream.reporter.js, cypress-parallel/simple-spec.reporter.js, @reportportal/agent-js-cypress",
   "reportportalAgentJsCypressReporterOptions": {
     "endpoint": "https://test.tools.dhis2.org/reportportal/api/v1",
     "token": "invlid",

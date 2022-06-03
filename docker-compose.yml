@@ -10,6 +10,6 @@ services:
       CI_BUILD_ID: ${CI_BUILD_ID:-"test0002"}
       RP_TOKEN: ${REPORT_PORTAL_TOKEN}
     volumes: 
-      - ./docker/allure-results:/tests/allure-results
-      - ./docker/allure-report:/tests/allure-report
-      - ./docker/screenshots:/tests/cypress/screenshots
+      - ./allure-results:/tests/allure-results
+      - ./allure-report:/tests/allure-report
+      - ./screenshots:/tests/cypress/screenshots
