@@ -3,18 +3,21 @@ import {
   DASHBOARD_SCROLL_BAR,
   LOADED_DASHBOARD_CHIPS,
   ALL_DASHBOARD_ITEMS,
-  LOADED_DASHBOARD_ITEMS
-} from './utils/dashboard'
+  LOADED_DASHBOARD_ITEMS,
+  waitForVisualizations,
+  openApp
+} from '../utils/dashboard'
 
 describe('Dashboards', () => {
   const dashboards = Cypress.env('dashboards')
  
   beforeEach(() => {
+    openApp();
     cy.clearConsoleLogs();
   })
   
   dashboards.forEach(dashboard => {
-    it(dashboard.name, () => {
+    it(dashboard.displayName, () => {
       openDashboard( dashboard.id );
       scrollDown()
 
@@ -30,8 +33,8 @@ describe('Dashboards', () => {
 
 function scrollDown( i = 1 ) {
   const resolution = Cypress.config("viewportHeight")
-  if ( i  > 15 ){
-    throw 'Exceeded recursion level'  
+  if ( i  > 20 ){
+    return;
   }
 
   cy.get(LOADED_DASHBOARD_ITEMS).then(visibleItems => {
@@ -40,6 +43,7 @@ function scrollDown( i = 1 ) {
         cy.get(DASHBOARD_SCROLL_BAR)
           .scrollTo(0, resolution * i)
           .waitForResources()
+          
         scrollDown(i+1)
       }
   

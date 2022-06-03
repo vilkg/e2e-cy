@@ -1,0 +1,15 @@
+version: '3'
+services: 
+  cypress-tests:
+    image: 'dhis2/cypress-tests:master'
+    environment:
+      CYPRESS_BASE_URL: https://smoke.dhis2.org/dev_smoke
+      CYPRESS_REPORT_PORTAL_ENABLED: ${REPORT_PORTAL_ENABLED:-'false'}
+      cypress_login_username: 'system'
+      cypress_login_password: 'System123'
+      CI_BUILD_ID: ${CI_BUILD_ID:-"test0002"}
+      RP_TOKEN: ${REPORT_PORTAL_TOKEN}
+    volumes: 
+      - ./docker/allure-results:/tests/allure-results
+      - ./docker/allure-report:/tests/allure-report
+      - ./docker/screenshots:/tests/cypress/screenshots

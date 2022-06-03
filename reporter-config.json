@@ -1,0 +1,22 @@
+{
+  "reporterEnabled": "@reportportal/agent-js-cypress",
+  "reportportalAgentJsCypressReporterOptions": {
+    "endpoint": "https://test.tools.dhis2.org/reportportal/api/v1",
+    "token": "invlid",
+    "launch": "e2e_tests",
+    "project": "dhis2_auto",
+    "description": "",
+    "attributes": [
+      {
+         "key": "version",
+         "value": "master"
+      }
+    ],
+    "debug": false,
+    "parallel": true,
+    "autoMerge": true,
+    "restClientConfig": {
+      "timeout": 900000
+    }
+  }
+}

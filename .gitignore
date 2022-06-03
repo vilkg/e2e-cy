@@ -1,7 +1,11 @@
 results
+allure-report
 allure-results
 build_artifacts
 log
 node_modules
 cypress/screenshots/
 cypress/videos
+docker
+multi-reporter-config.json
+.DS_store

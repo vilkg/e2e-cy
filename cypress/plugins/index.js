@@ -1,8 +1,8 @@
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 const logToOutput  =  require('./log-to-output')
 const initData = require('./init-data.js');
+const reportPortal = require('./report-portal');
 
-const axios = require('axios');
 const _ = require('lodash')
 
 /// <reference types="cypress" />
@@ -24,22 +24,17 @@ const _ = require('lodash')
  */
 // eslint-disable-next-line no-unused-vars
 module.exports = async (on, config) => {
-  //const jar = new CookieJar();
- 
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config 
-
   await initData(config);
-  console.log(config)
+
   logToOutput.install(on, ( type, event ) => {
-
     if (event.level === 'error' || event.type === 'error') {
-      //console.log(event)
-
       return true;
     }
   }, { recordLogs: true });
 
+  reportPortal.install(on, config);
   allureWriter(on, config);
   return config;
 }
+
+

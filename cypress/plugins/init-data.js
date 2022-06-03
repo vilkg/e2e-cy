@@ -1,7 +1,8 @@
 const axios = require('axios');
 const _ = require('lodash')
 
-const struts_apps = ['dhis-web-dataentry/index.action', 'dhis-web-approval-classic/index.action']
+const struts_apps = ['dhis-web-dataentry/index.action']
+const queryParams = '?fields=displayName,id&paging=false';
 
 async function initData( config ) {
   console.log('Initializing data')
@@ -23,6 +24,7 @@ async function initData( config ) {
   });
 
   const fetchData = async ( url, callback) => {
+    
     const { data } = await client.get(url, {
       baseURL: config.baseUrl,
       auth: {
@@ -39,17 +41,33 @@ async function initData( config ) {
   
     appList.push(...data.flatMap(i => i.webName))
     config.env.apps = appList
-  
-    console.log('Fetched the following apps for testing')
-    console.table(appList)
   })
 
-  await fetchData('/api/dashboards?fields=id,name&paging=false', (data) => {
+  await fetchData('/api/dashboards' + queryParams, (data) => {
     config.env.dashboards = data.dashboards;
+    console.table(config.env.dashboards)
     
   })
-  await fetchData('/api/visualizations?fields=id,displayName&paging=false', (data) => {
+  await fetchData('/api/visualizations' + queryParams, (data) => {
     config.env.visualizations = data.visualizations;
+  })
+
+  await fetchData('/api/eventReports.json' + queryParams, (data) =>{
+    config.env.eventReports = data.eventReports;
+  })
+
+  await fetchData('/api/eventCharts.json' + queryParams, (data) => {
+    config.env.eventCharts = data.eventCharts;
+  })
+
+  await fetchData('/api/maps.json' + queryParams, ( data ) => {
+    config.env.maps = data.maps;
+  })
+
+  await fetchData(`/api/eventVisualizations.json${queryParams}&filter=type:eq:LINE_LIST`, ( data ) => {
+    config.env.eventVisualizations = data.eventVisualizations;
+    console.table(config.env.eventVisualizations)
+
   })
 }
 

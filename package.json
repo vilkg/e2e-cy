@@ -5,8 +5,10 @@
   "scripts": {
     "browserstack": "browserstack-cypress run --sync",
     "cy:open": "cypress open",
-    "cy:test": "cypress run --spec ./cypress/integration/apps_smoke_spec.js --browser chrome",
-    "allure:serve": "allure serve --results ./build_artifacts/**/*/*/allure-results"
+    "cy:test": "cypress run --browser chrome",
+    "cy:parallel": "cypress-parallel -t 3 -s cy:test -d cypress/e2e",
+    "allure:serve": "allure serve --results ./allure-results",
+    "allure:generate": "allure genera"
   },
   "repository": {
     "type": "git",
@@ -15,12 +17,18 @@
   "author": "Gintare Vilkelyte <vilkelyte.gintare@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@shelex/cypress-allure-plugin": "^2.23.0",
-    "axios": "^0.25.0",
+    "@reportportal/agent-js-cypress": "^5.0.3",
+    "@shelex/cypress-allure-plugin": "^2.26.5",
+    "axios": "^0.27.2",
     "chalk": "^4.0.0",
-    "chrome-remote-interface": "^0.31.1",
-    "cypress": "^9.3.1",
-    "cypress-network-idle": "^1.3.3",
-    "cypress-wait-until": "^1.7.2"
+    "chrome-remote-interface": "^0.31.2",
+    "colors": "^1.4.0",
+    "cypress": "^10.0.2",
+    "cypress-multi-reporters": "^1.6.0",
+    "cypress-network-idle": "^1.10.0",
+    "cypress-parallel": "^0.9.0",
+    "cypress-plugin-tab": "^1.0.5",
+    "cypress-wait-until": "^1.7.2",
+    "moment": "^2.29.3"
   }
 }
