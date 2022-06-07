@@ -26,13 +26,13 @@ const _ = require('lodash')
 module.exports = async (on, config) => {
   await initData(config);
 
+  reportPortal.install(on, config);
   logToOutput.install(on, ( type, event ) => {
     if (event.level === 'error' || event.type === 'error') {
       return true;
     }
   }, { recordLogs: true });
 
-  reportPortal.install(on, config);
   allureWriter(on, config);
   return config;
 }
