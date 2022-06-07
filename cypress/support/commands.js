@@ -2,6 +2,11 @@ import './commands/wait.js'
 import './commands/logs.js'
 //require('@reportportal/agent-js-cypress/lib/commands/reportPortalCommands');
 
+// Cypress throws an exception in dashboard tests when scrolling/using the viewport.
+// This disables that exception.
+// See https://github.com/quasarframework/quasar/issues/2233
+Cypress.on("uncaught:exception", err => !err.message.includes("ResizeObserver"));
+
 Cypress.Commands.add('login', () => {
   const username = Cypress.env('login_username');
   const password = Cypress.env('login_password');
