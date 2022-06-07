@@ -8,8 +8,8 @@ require('@reportportal/agent-js-cypress/lib/commands/reportPortalCommands');
 Cypress.on("uncaught:exception", err => !err.message.includes("ResizeObserver"));
 
 Cypress.Commands.add('login', () => {
-  const username = Cypress.env('login_username');
-  const password = Cypress.env('login_password');
+  const username = Cypress.env('LOGIN_USERNAME');
+  const password = Cypress.env('LOGIN_PASSWORD');
   cy.session([ username, password ], () => {
     cy.request({
       method: 'POST',

@@ -7,8 +7,8 @@ module.exports = defineConfig({
   video: false,
   env: {
     REPORT_PORTAL_ENABLED: 'false',
-    login_username: 'admin',
-    login_password: 'district',
+    LOGIN_USERNAME: 'admin',
+    LOGIN_PASSWORD: 'district',
     allure: 'true',
   },
   numTestsKeptInMemory: 0,

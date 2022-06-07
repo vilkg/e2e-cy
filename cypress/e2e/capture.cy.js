@@ -64,6 +64,6 @@ describe('Capture', () => {
 
     getCommentByValue(comment)
       .get('[data-test=comment-user]' )
-      .should('have.text', Cypress.env('login_username'));
+      .should('have.text', Cypress.env('LOGIN_USERNAME'));
   })
 })

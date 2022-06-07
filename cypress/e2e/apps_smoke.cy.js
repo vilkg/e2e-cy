@@ -1,6 +1,5 @@
 describe('Apps', () => {
   const apps = Cypress.env('apps')
-  console.table(apps)
   
   beforeEach(() => {
     cy.clearConsoleLogs();

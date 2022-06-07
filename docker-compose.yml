@@ -2,7 +2,7 @@ version: '3'
 services: 
   cypress-tests:
     image: 'dhis2/cypress-tests:master'
-    user: 0:0
+    shm_size: '2gb' 
     environment:
       CYPRESS_BASE_URL: https://smoke.dhis2.org/dev_smoke
       CYPRESS_REPORT_PORTAL_ENABLED: ${REPORT_PORTAL_ENABLED:-'false'}
@@ -11,6 +11,6 @@ services:
       CI_BUILD_ID: ${CI_BUILD_ID:-"test0002"}
       RP_TOKEN: ${REPORT_PORTAL_TOKEN}
     volumes: 
-      - ./allure-results:/usr/test/allure-results:Z
-      - ./allure-report:/usr/test/allure-report:Z
-      - ./screenshots:/usr/test/cypress/screenshots:Z
+      - ./allure-results:/usr/test/allure-results
+      - ./allure-report:/usr/test/allure-report
+      - ./screenshots:/usr/test/cypress/screenshots

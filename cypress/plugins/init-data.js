@@ -10,8 +10,8 @@ async function initData( config ) {
   const login = await axios.get('/api', {
     baseURL: config.baseUrl,
     auth: {
-      username: config.env.login_username,
-      password: config.env.login_password,
+      username: config.env.LOGIN_USERNAME,
+      password: config.env.LOGIN_PASSWORD,
     }
   });
 
@@ -28,8 +28,8 @@ async function initData( config ) {
     const { data } = await client.get(url, {
       baseURL: config.baseUrl,
       auth: {
-        username: config.env.login_username,
-        password: config.env.login_password,
+        username: config.env.LOGIN_USERNAME,
+        password: config.env.LOGIN_PASSWORD,
       }
     });
 
@@ -41,30 +41,44 @@ async function initData( config ) {
   
     appList.push(...data.flatMap(i => i.webName))
     config.env.apps = appList
+    console.log('APPS: ')
+    console.table(config.env.apps);
   })
 
   await fetchData('/api/dashboards' + queryParams, (data) => {
     config.env.dashboards = data.dashboards;
+    console.log('DASHBOARDS:')
+    console.table(config.env.dashboards);
   })
 
   await fetchData('/api/visualizations' + queryParams, (data) => {
     config.env.visualizations = data.visualizations;
+    console.log('VISUALIZATIONS:')
+    console.table(config.env.visualizations);
   })
 
   await fetchData('/api/eventReports.json' + queryParams, (data) =>{
     config.env.eventReports = data.eventReports;
+    console.log('EVENT REPORTS:')
+    console.table(config.env.eventReports);
   })
 
   await fetchData('/api/eventCharts.json' + queryParams, (data) => {
     config.env.eventCharts = data.eventCharts;
+    console.log('EVENT CHARTS:')
+    console.table(config.env.eventCharts);
   })
 
   await fetchData('/api/maps.json' + queryParams, ( data ) => {
     config.env.maps = data.maps;
+    console.log('MAPS')
+    console.table(config.env.maps);
   })
 
   await fetchData(`/api/eventVisualizations.json${queryParams}&filter=type:eq:LINE_LIST`, ( data ) => {
     config.env.eventVisualizations = data.eventVisualizations;
+    console.log('EVENT VISUALIZATIONS: ')
+    console.table(config.env.eventVisualizations);
   })
 }
 

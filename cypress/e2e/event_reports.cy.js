@@ -2,7 +2,6 @@ import { loadEventReport } from '../utils/analytics'
 
 describe('Event reports', () => {
   const eventReports = Cypress.env('eventReports');
-  console.table(eventReports)
   
   beforeEach(() => {
     cy.clearConsoleLogs();

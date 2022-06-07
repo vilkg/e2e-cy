@@ -16,7 +16,7 @@
     "parallel": true,
     "autoMerge": true,
     "restClientConfig": {
-      "timeout": 900000
+      "timeout": 90000
     }
   }
 }

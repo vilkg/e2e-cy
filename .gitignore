@@ -9,3 +9,5 @@ cypress/videos
 docker
 multi-reporter-config.json
 .DS_store
+runner-results
+screenshots

@@ -1,7 +1,6 @@
 import { loadVisualisation } from '../utils/analytics';
 describe('Data visualizer', () => {
   const visualizations = Cypress.env('visualizations');
-  console.table(visualizations);
   
   beforeEach(() => {
     cy.clearConsoleLogs();

@@ -10,7 +10,6 @@ import {
 
 describe('Dashboards', () => {
   const dashboards = Cypress.env('dashboards')
-  console.table(dashboards)
   
   beforeEach(() => {
     openApp();
