@@ -6,11 +6,12 @@ services:
     environment:
       CYPRESS_BASE_URL: https://smoke.dhis2.org/dev_smoke
       CYPRESS_REPORT_PORTAL_ENABLED: ${REPORT_PORTAL_ENABLED:-'false'}
-      cypress_login_username: 'system'
-      cypress_login_password: 'System123'
+      CYPRESS_LOGIN_USERNAME: 'admin'
+      CYPRESS_LOGIN_PASSWORD: 'district'
       CI_BUILD_ID: ${CI_BUILD_ID:-"test0002"}
-      RP_TOKEN: ${REPORT_PORTAL_TOKEN}
+      RP_TOKEN: ${RP_TOKEN}
     volumes: 
       - ./allure-results:/usr/test/allure-results
       - ./allure-report:/usr/test/allure-report
       - ./screenshots:/usr/test/cypress/screenshots
+    entrypoint: "npm run cy:parallel"

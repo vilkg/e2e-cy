@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "DHIS2 e2e tests in cypress",
   "scripts": {
-    "browserstack": "browserstack-cypress run --sync",
     "cy:open": "cypress open",
     "cy:test": "cypress run --browser chrome",
     "cy:parallel": "cypress-parallel -t 3 -s cy:test -d cypress/e2e",
-    "allure:serve": "allure serve --results ./allure-results",
-    "allure:generate": "allure genera"
+    "allure:serve": "allure serve --results ./allure-results"
   },
   "repository": {
     "type": "git",

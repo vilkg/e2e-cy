@@ -7,6 +7,3 @@ RUN npm install
 COPY ./cypress.config.js ./cypress.config.js
 COPY ./reporter-config.json ./reporter-config.json
 COPY ./cypress ./cypress
-
-
-ENTRYPOINT ["/bin/sh", "-c" , "npm i && npm run cy:parallel && npm run allure:generate"]
