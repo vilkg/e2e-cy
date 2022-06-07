@@ -5,6 +5,7 @@ describe('Line listing', () => {
   const lineLists = Cypress.env('eventVisualizations');
 
   beforeEach(() => {
+    cy.clearConsoleLogs();
     cy.visit(LINE_LISTING_APP)
   })
   
