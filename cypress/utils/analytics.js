@@ -34,7 +34,7 @@ export const loadLineList = ( uid ) =>  {
 export const waitForVisualization = () => {
   cy.get(Selectors.VISUALIZATION_TITLE, {timeout: 10000}).should('be.visible')
 
-  cy.get(Selectors.LOADER, {timeout: 1000}).should('not.exist');
+  cy.get(Selectors.LOADER).should('not.exist');
 }
 
 export const checkVisualizationHasNoErrors = ( type, visualization ) => {
