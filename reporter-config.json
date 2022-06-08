@@ -12,7 +12,7 @@
          "value": "master"
       }
     ],
-    "debug": true,
+    "debug": false,
     "parallel": true,
     "autoMerge": true,
     "restClientConfig": {

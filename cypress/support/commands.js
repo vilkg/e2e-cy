@@ -5,7 +5,7 @@ import './commands/logs.js'
 // Cypress throws an exception in dashboard tests when scrolling/using the viewport.
 // This disables that exception.
 // See https://github.com/quasarframework/quasar/issues/2233
-Cypress.on("uncaught:exception", err => !err.message.includes("ResizeObserver"));
+Cypress.on("uncaught:exception", err => false);
 
 Cypress.Commands.add('login', () => {
   const username = Cypress.env('LOGIN_USERNAME');
