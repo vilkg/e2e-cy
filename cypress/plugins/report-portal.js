@@ -2,9 +2,9 @@ const registerReportPortalPlugin = require('@reportportal/agent-js-cypress/lib/p
 
 const install = ( on, config) => {
   const reportPortalEnabled = ( config.env.REPORT_PORTAL_ENABLED == true || config.env.REPORT_PORTAL_ENABLED == 'true');
-  console.log(`report portal enabled: ${reportPortalEnabled}`)
+  log(`report portal enabled: ${reportPortalEnabled}`)
   if (reportPortalEnabled) {
-      console.log('Configuring report portal')
+      log('Configuring report portal')
       config.reporter = 'cypress-multi-reporters',
       config.reporterOptions = {
         configFile: './reporter-config.json'
@@ -12,6 +12,10 @@ const install = ( on, config) => {
       // enable reportPortal plugin
       registerReportPortalPlugin(on, config);
   }
+}
+
+function log(message) {
+  console.log('[report-portal-plugin] ' +  message)
 }
 
 module.exports = {

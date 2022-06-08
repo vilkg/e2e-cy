@@ -6,17 +6,16 @@ const excludedErrors = [
 ];
 
 Cypress.Commands.add('getConsoleLogs', () => {
-  cy.task('log-to-output:getLogs').then( (logs) => {
+  cy.task('console:logs').then( (logs) => {
     return logs.filter((log) => {
-      // excluding errors that are either known issues or expected under certain db states
       return !excludedErrors.some( (excl) => {
-        return log.includes(excl)
+        return log.text.includes(excl)
       })
     });
   })
 })
 
 Cypress.Commands.add('clearConsoleLogs', () => {
-  cy.task('log-to-output:clearLogs');
+  cy.task('console:clear');
 })
 
