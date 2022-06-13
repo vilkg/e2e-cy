@@ -21,7 +21,7 @@ def close(items):
   for item in items:
       body['entities'][str(item)] = {
         "status": "STOPPED",
-        "endTime": str(datetime.now())
+        "endTime": str(datetime.now().isoformat())
       }
 
   r = requests.put(url="{}/launch/stop".format(URL), headers=headers, json=body)
