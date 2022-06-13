@@ -29,13 +29,13 @@ def close(items):
     print('Failed to close items!')
     print(r.json())
 
-def merge(launches, startime): 
+def merge(launches, startime, name): 
     body = {
       "mergeType": "BASIC",
       'launches': launches,
+      'name': name,
       "endTime": str(datetime.now().isoformat()),
       'extendSuitesDescription': 'true',
-      'name': 'e2e_tests',
       'startTime': startime
     }
  
@@ -45,19 +45,17 @@ def merge(launches, startime):
       print('Failed to merge items')
       print(r.json())
    
-    print(r.json())
-
 content = launches.json()['content']
 if len(content) < 2: 
   print('There were {} launches found. No need for merging.'.format(len(content)))
   exit(0)
-
+  
 in_progress = [x for x in content if x['status'] == 'IN_PROGRESS']
-print(in_progress)
 
 if len(in_progress) > 0:
   print('Closing in progress items')
   close( [x['id'] for x in in_progress])
 
 startime = min([launch['startTime'] for launch in content])
-merge([x['id'] for x in content], startime)
+name = content[0]['name']
+merge([x['id'] for x in content], startime, name)
