@@ -3,13 +3,13 @@
   "reportportalAgentJsCypressReporterOptions": {
     "endpoint": "https://test.tools.dhis2.org/reportportal/api/v1",
     "token": "invlid",
-    "launch": "e2e_tests",
+    "launch": "e2e_tests_2.38",
     "project": "dhis2_auto",
     "description": "",
     "attributes": [
       {
          "key": "version",
-         "value": "master"
+         "value": "2.38"
       }
     ],
     "debug": false,
