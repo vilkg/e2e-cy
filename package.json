@@ -15,7 +15,7 @@
   "author": "Gintare Vilkelyte <vilkelyte.gintare@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@reportportal/agent-js-cypress": "^5.0.3",
+    "@reportportal/agent-js-cypress": "^5.0.4",
     "@shelex/cypress-allure-plugin": "^2.26.5",
     "axios": "^0.27.2",
     "chalk": "^4.0.0",
@@ -27,6 +27,6 @@
     "cypress-parallel": "^0.9.0",
     "cypress-plugin-tab": "^1.0.5",
     "cypress-wait-until": "^1.7.2",
-    "moment": "^2.29.3"
+    "moment": "^2.29.4"
   }
 }

@@ -7,6 +7,7 @@ export const Selectors = {
   VISUALIZATION_TITLE: '[data-test="AO-title"]',
   LOADER: '[data-test="dhis2-uicore-circularloader"]'
 }
+
 export const MAP_CONTAINER = "#dhis2-map-container .dhis2-map";
 
 export const loadVisualisation = ( uid ) => {
@@ -23,7 +24,7 @@ export const loadEventChart = ( uid ) => {
 
 export const loadMap = ( uid ) => {
   cy.visit(`${MAPS_APP_URL}/?id=${uid}`)
-    .waitForResources();;
+    .waitForResources();
 }  
 
 export const loadLineList = ( uid ) =>  {

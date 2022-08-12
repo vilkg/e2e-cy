@@ -6,9 +6,9 @@ const excludedErrors = [
 ];
 
 Cypress.Commands.add('getConsoleLogs', () => {
-  cy.task('console:logs').then( (logs) => {
+  cy.task('console:logs').then((logs) => {
     return logs.filter((log) => {
-      return !excludedErrors.some( (excl) => {
+      return !excludedErrors.some((excl) => {
         return log.text.includes(excl)
       })
     });

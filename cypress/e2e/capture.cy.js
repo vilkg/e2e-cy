@@ -10,6 +10,8 @@ import { openApp,
   getCommentByValue
 } from '../utils/capture'
 
+import { getCurrentUserDisplayName } from '../utils/api'
+
 describe('Capture', () => {
   beforeEach(() => {
     openApp();
@@ -55,15 +57,14 @@ describe('Capture', () => {
     cy.location('href').should('not.contain', 'new');
     cy.get(Selectors.WORKING_LIST_TABLE)
       .should('be.visible');
-    
-  
     cy.get('@eventId').then((eventId) => {
       openEvent(eventId)
     })
-    //openLastSavedEvent();
 
-    getCommentByValue(comment)
+    getCurrentUserDisplayName().then( displayName => {
+      getCommentByValue(comment)
       .get('[data-test=comment-user]' )
-      .should('have.text', Cypress.env('LOGIN_USERNAME'));
+      .should('have.text', displayName)
+    })
   })
 })

@@ -1,10 +1,8 @@
 import {
   openDashboard,
   DASHBOARD_SCROLL_BAR,
-  LOADED_DASHBOARD_CHIPS,
   ALL_DASHBOARD_ITEMS,
   LOADED_DASHBOARD_ITEMS,
-  waitForVisualizations,
   openApp
 } from '../utils/dashboard'
 

@@ -1,6 +1,7 @@
 import { getLineLists } from '../utils/api';
 import { LINE_LISTING_APP, loadLineList, Selectors } from '../utils/analytics';
 
+
 describe('Line listing', () => {
   const lineLists = Cypress.env('eventVisualizations');
 
