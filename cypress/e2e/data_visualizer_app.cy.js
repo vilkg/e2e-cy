@@ -1,5 +1,5 @@
 import { loadVisualisation } from '../utils/analytics';
-describe('Data visualizer', () => {
+describe('Data visualizer -> DHIS2-11216', () => {
   const visualizations = Cypress.env('visualizations');
   
   beforeEach(() => {

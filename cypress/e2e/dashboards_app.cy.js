@@ -6,7 +6,7 @@ import {
   openApp
 } from '../utils/dashboard'
 
-describe('Dashboards', () => {
+describe('Dashboards -> DHIS2-8010', () => {
   const dashboards = Cypress.env('dashboards')
   
   beforeEach(() => {

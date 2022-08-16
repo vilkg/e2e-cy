@@ -3,15 +3,21 @@ const registerReportPortalPlugin = require('@reportportal/agent-js-cypress/lib/p
 const install = ( on, config) => {
   const reportPortalEnabled = ( config.env.REPORT_PORTAL_ENABLED == true || config.env.REPORT_PORTAL_ENABLED == 'true');
   log(`report portal enabled: ${reportPortalEnabled}`)
-  if (reportPortalEnabled) {
-      log('Configuring report portal')
-      config.reporter = 'cypress-multi-reporters',
-      config.reporterOptions = {
-        configFile: './reporter-config.json'
-      };
-      // enable reportPortal plugin
-      registerReportPortalPlugin(on, config);
+  if (!reportPortalEnabled) {
+      config.reporterOptions.reportportalAgentJsCypressReporterOptions = {}
+
+      var reporters = config.reporterOptions.reporterEnabled.trim().split(',')
+        .filter(reporter => {
+          return !reporter.includes('reportportal')
+        })
+
+      config.reporterOptions.reporterEnabled = reporters.join(',')
+      
+      return config;
   }
+
+  log('registering commands')
+  registerReportPortalPlugin(on, config);
 }
 
 function log(message) {

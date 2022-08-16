@@ -1,6 +1,6 @@
 import { loadEventReport } from '../utils/analytics'
 
-describe('Event reports', () => {
+describe('Event reports -> DHIS2-8019', () => {
   const eventReports = Cypress.env('eventReports');
   
   beforeEach(() => {

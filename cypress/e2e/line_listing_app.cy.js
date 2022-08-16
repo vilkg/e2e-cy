@@ -2,7 +2,7 @@ import { getLineLists } from '../utils/api';
 import { LINE_LISTING_APP, loadLineList, Selectors } from '../utils/analytics';
 
 
-describe('Line listing', () => {
+describe('Line listing -> DHIS2-13221', () => {
   const lineLists = Cypress.env('eventVisualizations');
 
   beforeEach(() => {
