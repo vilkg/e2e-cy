@@ -15,13 +15,7 @@ import { getCurrentUserDisplayName } from '../utils/api'
 describe('Capture', () => {
   beforeEach(() => {
     openApp();
-    //selectOrgUnitByName('Ngelehun CHC');
-    //selectProgramByName('Information Campaign')
   })
-  /*it('should delete events', () => {
-      selectOrgUnitByName('Ngelehun CHC');
-      selectProgramByName('Information Campaign')
-  })*/
 
   it('should open new event form', () => {
     ContextActions.selectOrgUnitByName('Ngelehun CHC')
@@ -31,12 +25,10 @@ describe('Capture', () => {
       .click()
       .get(Selectors.NEW_EVENT_IN_SELECTED_PROGRAM_BUTTON)
       .click()
-
   
-    cy.location('href').should('contain', '/new');
-    //expect('loc.pathname').to.contain('new');
-
+    cy.get(Selectors.NEW_EVENT_FORM).should('be.visible')
   })
+  
   it('should create event', () => {
     const comment = "Test comment";
     cy.visit('dhis-web-capture/index.html#/new?orgUnitId=DiszpKrYNg8&programId=q04UBOqq3rp');

@@ -10,7 +10,8 @@ export const Selectors = {
   NEW_EVENT_IN_SELECTED_PROGRAM_BUTTON: '[data-test="new-menuitem-one"] a',
   WORKING_LIST_TABLE: '[data-test="main-page-working-list"]',
   NEW_EVENT_FORM: '[data-test="registration-page-content"]',
-  PROGRAM_SELECTOR: '#program-selector .Select-placeholder'
+  PROGRAM_SELECTOR: '#program-selector .Select-placeholder',
+  NEW_EVENT_FORM: '[data-test=registration-page-content]'
 }
 
 export const ContextActions = {

@@ -12,7 +12,17 @@ const FAILED = 'failed';
 
 class Reporter {
   constructor(runner, config) {
-    this.options = config.reporterOptions;
+    const updatedConfig = {
+      ...config,
+      reporterOptions: {
+        ...config.reporterOptions,
+        isEnabled: config.reporterOptions.isEnabled || process.env.JIRA_ENABLED,
+        username: config.reporterOptions.username || process.env.JIRA_USERNAME,
+        password: config.reporterOptions.password || process.env.JIRA_PASSWORD,
+        versionName: config.reporterOptions.versionName || process.env.JIRA_RELEASE_VERSION_NAME
+      },
+    };
+    this.options = updatedConfig.reporterOptions;
     this.isConfigured = false;
 
     runner.on(EVENT_RUN_BEGIN, () => {

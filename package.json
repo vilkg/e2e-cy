@@ -6,6 +6,7 @@
     "cy:open": "cypress open",
     "cy:test": "cypress run --browser chrome",
     "cy:parallel": "cypress-parallel -t 3 -s cy:test -d cypress/e2e",
+    "cy:parallel-report": "cypress-parallel -r cypress-multi-reporters -o configFile=reporter-config.json -t 3 -s cy:test -d cypress/e2e",
     "allure:serve": "allure serve --results ./allure-results"
   },
   "repository": {
@@ -22,9 +23,9 @@
     "chrome-remote-interface": "^0.31.2",
     "colors": "^1.4.0",
     "cypress": "^10.4.0",
-    "cypress-multi-reporters": "^1.6.0",
+    "cypress-multi-reporters": "^1.6.1",
     "cypress-network-idle": "^1.10.0",
-    "cypress-parallel": "^0.9.0",
+    "cypress-parallel": "^0.9.1",
     "cypress-plugin-tab": "^1.0.5",
     "cypress-wait-until": "^1.7.2",
     "moment": "^2.29.4"

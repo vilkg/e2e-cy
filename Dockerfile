@@ -6,6 +6,7 @@ WORKDIR /usr/test
 COPY ./package.json ./package.json
 RUN npm install
 COPY ./merge_launches.py ./merge_launches.py
+COPY ./reporter-config.json ./reporter-config.json
 COPY ./cypress.config.js ./cypress.config.js
 COPY ./cypress ./cypress
 
