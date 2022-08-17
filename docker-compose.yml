@@ -13,6 +13,7 @@ services:
       JIRA_ENABLED: ${JIRA_ENABLED}
       JIRA_USERNAME: ${JIRA_USERNAME}
       JIRA_PASSWORD: ${JIRA_PASSWORD}
+      JIRA_RELEASE_VERSION_NAME: "${JIRA_RELEASE_VERSION_NAME}"
     volumes: 
       - ./allure-results:/usr/test/allure-results
       - ./allure-report:/usr/test/allure-report
